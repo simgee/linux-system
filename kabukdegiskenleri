@@ -1,0 +1,77 @@
+KABUK DEĞİŞKENLERİ
+Her kullanıcıya göre değişir.
+
+$HOME => Kullanıcının ev dizini(şuan kabuk ortamında çalışan)
+$UUID => Şuan kabuk ortamında çalışan kullanıcının user id'si
+$PWD  => Şuan kabuk ortamında çalışan kullanıcının
+$$    => Bash kabuğunun process ID sini gösterir.
+$PPID => terminalin process idsini 
+
+örnek;
+$echo $HOME $UID
+/home/simge 1000
+
+$echo $$ $PPID
+6236 6225
+
+$ps aux|less # komutun çıktısında PID kısmı proces ıdleri gösteriyor.
+hangi komut hangi proces id ile çalışıyor onu gösteriyor.
+
+      PID              KOMUT
+$$  => 6236        => Bash				#Bash kabuğunun process ID si
+$PPID  => 6225      => gnome-terminal	#$PPID değişkeni ise terminalin proces id sini gösterir.
+
+NOT: Unique sistemler üzerinde daha önce çalıştırılan proses daha düşük proces ıd alır.Biz gnome-terminali açmadan Bash Kabuğunu çalıştıramayız oyüzden $PPID numarası daha düşük daha sonra bash kabuğu açıldığı için $$ numarası daha büyüktür.Yani gnome-terminal üstünde bash kabuğunu açıyoruz.
+
+
+SORU:Kalıcı olarak ev dizininizin altındaki application dizini $APPS adında bir değişkene tanımlayınız. 
+$APPS=/home/user/apps
+$export APPS=/home/user/apps		#sadece kabuk açıkken geçerlidir.bu geçici olarak tanımlar.
+
+Not:Linux sistemi üzerinde herşey bir dosyadır.konfigürasyonların hepsini dosyaları değiştirerek yeni özellikler ekleyip çıkarabiliyoruz.Bash kabuğumuzla ilgili konfigürasyon dosyaları ev dizinin altında gizli olarak bulunur. . ile başladımı gizli dosya olur.
+$touch public .private # nokta koyduğumuz anda dosya gizli dosya oldu. 
+
+Bash Kabuğu ile ilgili öntanımlı özellikleri sunduğu ev dizininde .bashrc adlı konfigurasyon dosyamız var bu dosyanın içine kalıcı değişkenimizi tanımlarız.
+$nano .bashrc
+export APPS=/home/simge/apps 
+Konfigürasyon dosyasının içine tanımladıktan sonra 
+$echo $APPS ile kontrol ediyoruz.
+
+statik bir değişken tanımlıyoruz kabuk ortamı açık olduğu sürece geçici bir değişken tanımlayabiliriz ama bilgisayarı kapatıp açtığımızda bu kaybolur o yüzden kabuğun konfigurasyon dosyasının içine değişkeni yazıyoruz.
+
+
+SORU:
+pathimizi öğrenmek için 
+$echo $PATH
+1-bin adlı klasör oluşturun
+2-bu dizini PATH değişkenine ekleyiniz.
+3-içine bir komut dosyası oluşturun.
+4-bu komut dosyasını çalıştırın
+
+Path Değişkenin işi nedir?
+$PATH kullanabileceğimiz komutların pathini veriyor
+Path değişkeni çalıştırabileceğimiz komutlar bu dizinler içinde bulunuyor. 
+
+Kullandığımız belli başlı komutlar için bin dizini oluşturup ve bu komutları kullanabilmek için ön tanımlı pathe ekleyelim.bin dizinin içinde betik yada kullandığımız belli başlı komutları yazdığımızda yada çalıştırdığımızda dosya bash kabuğunda tanımlıdır.taba bastığımızda tamamlar.
+
+#2-dosyayı $PATH değişkenine ekleyelim.
+$mkdir bin
+$echo "PATH =$PATH:$HOME/bin">> $HOME/.bashrc
+$cd bin
+
+#3-bir komut dosyası oluşturalım 
+$touch user_command 
+$nano user_command
+	#!/bin/bash            satırını en başa ekledik.
+	uname -a && echo OK|| echo De Git   
+   
+sonra bu dosyanın izinlerini kontrol ediyoruz.
+$ls -l user_command
+$chmod 777 user_command 
+
+4-bu komut dosyasını çalıştıralım.
+$ ./user_command
+
+
+
+
