@@ -1,0 +1,47 @@
+$cat /proc/cpuinfo => işlemcimiz hakkında detaylı bilgiye sahip olabiliriz.
+
+$lscpu => CPU Bilgisi => /proc/cpuinfo dosyasının manual halidir.bu dosyadaki bilgilerin özetini 
+			bize sunar.
+$lspci => PCI aygıtları hakkında bize bilgi verir.
+
+$lsusb => USB Aygıtları hakkında bize bilgi verir.
+
+$df => Bağlı Disk Blockları hakkında bize bilgi verir.
+
+$dmidecode => Detaylı BIOS bilgileri
+
+$free => Detaylı Bellek Bilgisi
+
+$cat/proc/meminfo =>Detaylı Bellek Bilgisinin dosyası
+
+$lsscsi  => SSCSI Aygıtları
+
+$lspcmcia => PCMCIA Aygıtları
+
+#fdisk => (Harddiskleri listeler-Root olup çalýþtýrmak gerekli # olduğu için)
+
+#fdisk -l => sistemimize bağlı olan harddiskleri listeleyecektir.
+
+SORU: Detaylı donanım bilginizi veren bir dosya oluşturun.
+
+$touch hardware_info # hardware_info adlı bir dosya oluşturuyoruz.
+$echo -e "CPU Bilgileri\n" > hardware_info
+$cat /proc/cpuinfo >> hardware_info
+$echo -e "PCI Aygitlari\n" >> hardware_info
+$lspci >> hardware_info
+$echo -e "\nUSB Aygitlari\n" >> hardware_info
+$lsusb >> hardware_info
+$echo -e "\nBagli Disk Bloklari\n" >> hardware_info
+$df >> hardware_info
+$echo -e "\nBELLEK Bilgisi\n" >> hardware_info
+$free >> hardware_info
+$echo -e "\nSCSI Aygitlari\n" >> hardware_info
+$lsscsi >> hardware_info
+
+$less hardware_info 
+$more hardware_info     komutları ile dosyayı inceleyebiliriz.
+
+Not: 
+lspci > hardware_info	=> komutu hardware_info dosyasının üstüne yazar.
+lspci >> hardware_info	=> komutu hardware_info dosyasının devamına yazar.
+
