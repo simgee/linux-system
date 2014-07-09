@@ -1,0 +1,65 @@
+BASH kabuğu üstünde meta karakterler ve kontrol operatörleri vardır.
+
+Meta Karakter
+
+|
+;
+(
+)
+>
+<
+&
+
+Kontrol Operatörleri
+
+||
+&&
+;
+;;
+(
+)
+
+ve bu meta karakterler ve kontrol operatörleri bize betik yazarken çok kolaylık sağlar.
+
+$echo line1; echo line2; echo line3
+line1
+line2
+line3
+#; metakarakterdir ardarda komutları çalıştırmamızı sağlıyor.
+
+$echo line1&& echo line2&& echo line3
+line1
+line2
+line3
+# && kontrol operatörüdür.bir önceki komutun çıktısı doğruysa sonraki komutu çalıştırır.
+
+$echo line1 && echo line2 || echo line3
+line1
+line2
+
+#&& den önceki komut başarılı çalışmışsa bir sonraki komuta geçer.
+Bash kabuğunda bir komut çalıştığında exit çıktıları verir.Komut doğru çalışırsa exit 0 çıktısı verir.bu çıktıları bash kabuğu ekrana yazdırmaz kendisi yorumlar.
+&& kontrol operatörü exit 0 ise bir sonraki komutuda çalıştırır.
+|| kontrol operatöründe ise çıktı exit 0 dan farklıysa yani komut başarılı çalışmadıysa bir sonraki komutu çalıştırır.(eğer bir önceki komut fail olmadıysa komutu çalıştırmaz)
+
+$echo line1 && echo line2 ; echo line3
+line1
+line2
+line3
+
+$echo line1 || echo line2 ; echo line3
+line1
+line3
+
+$(echo line1;exit 0) && echo OK || echo BAD
+line1
+OK
+
+$(echo line1;exit 1) && echo OK || echo BAD
+line1
+BAD
+
+Not: shell üzerinde exit komutu vardır. exit yazdığımızda terminalden çıkış yapar.
+ctrl+d ile çıkış yaparız
+
+
