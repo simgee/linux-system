@@ -1,0 +1,153 @@
+--------------
+Application
+------------
+shell
+-----------                   Linux/unix üzerinde komutları çalıstırmamıza 
+Kernel                    yarayan bir kabuk
+-----------
+Hardware
+
+
+En sık kullanılan kabuk Bash kabuğu
+Bash->Boune-again Shell
+Stephen Bourne -> sh kabuğu
+
+Bash kabuğunun ismi Stephen Bourne dan geliyor.Stephen bourne daha
+az gelismiş olan sh kabuğunu yazmıstır. bash kabuğu ondan daha 
+gelişmiş bir kabuk linux dağıtımları üstünde öntanımlı olarak gelir.
+
+Shell I/O Streams
+1-Stdin		kabuk otamında girdiğimiz komutlar standart input
+2-Stdout	komutun cıktısı standart output 
+3-Stder		yanlış bir komut yada yanlış bir parametre girilirse bize 
+hata kodunu döndürür.
+ 
+Shell kabuğunun kendisi bir uygulamadır. Linux/unix sistemleri üzerinde
+belli komutlar mevcut bu komut kabuk üstünde bir isme sahip parametreleri
+oluyor bu komutları shell kabuğu çalıştırıyor
+
+Komut
+  |
+  v
+Command Name			ls -l
+  |				-- --
+  v				|   |						
+Options				v   v
+  |			     komut  parametre
+  v				    options
+Parameters
+
+
+Örnek:
+$cd /bin 
+$ls
+
+/bin dizinin içinde bizim kullandığımız komutların listesini görüyoruz.
+yeşil renkli olanlar çalıştırılabilir dosya olduğunu gösterir.
+komutlarda birer çalıştırılabilir dosya.
+biz ls komutunu verdiğimizde bu dizin içindeki ls dosyasını
+çalıştırmış oluyoruz.
+
+$ls 	     -l           /bin
+ (komutadı) (parametre) (arguman)
+
+darthwader@starwars:~$
+kullanıcı adı 	->dartwader
+@ 		->ayraç
+starwars	->Hostname
+~		->bulunduğu dizin
+$		->user prompt
+
+~(home dizinini simgeler) meta karakterlerden biridir
+
+---------------|
+Application    |Userspace
+------------   |
+shell          |
+----------------
+Kernel	    ---|
+-----------    |Kernelspace
+Hardware ------|
+
+linuxta çekirdek yenilemelerinden reboot etmek gerekmiyor o yüzden linux
+sistemlerinin uptime süreleri daha çoktur
+netcraft sitesinden dünya üzerindeki büyük sunucuların uptime sürelerini
+öğrenebiliriz.
+
+
+$echo 
+
+$ echo A
+A
+$ echo bu bir deyim
+bu bir deyim
+
+$ echo bu   bir  deyim
+bu bir deyim
+
+$ echo "bu   bir  deyim"
+bu   bir  deyim
+
+$ echo "bu bir deyim" #bu bir yorum    # '#' ile ise yorum yaparız
+bu bir deyim
+	
+$ echo -n elma armut uzum
+elma armut uzumsimge@smg ~ $  # alt satıra atlamıyor prompterı aynı satırda 
+				çalıştırıyor 
+						
+Backslash Escapes
+-e parametresini backslash escapeleri çalıştırabilmek için kullanıyoruz.
+backslash ve sonrasında gelen harfleri tanıması için -e parametresini 
+kullanmamız gerekiyor
+\x -->
+$ echo -e "\xelma,armut"
+lma,armut
+
+\c --> sonrasını siler.ve alt satıra atlamaz.-e parametresi ile aynı işi yapar
+$ echo -e "elma,\carmut"
+elma,simge@smg ~ $ 
+$ echo -e "elma armut\c"        
+elma armutsimge@smg ~ $
+$echo -e "Ben burday\c"
+Ben burdaysimge@smg ~ $ 
+
+\n --> alt satıra geçirir
+$ echo -e "elma,\narmut"
+elma,
+armut
+
+\a -->sistemimizde uyarılar açıksa bize uyarı verir.Alarm
+$ echo -e "saat 9.30\a"
+saat 9:30
+
+Örnek:
+echo ile iki satır bırakarak bir örnek yazınız.double line
+$ echo -e "bu\n\nbir deyim\n"
+bu
+
+bir deyim
+
+echo ile iki boşluk bırakarak bir örnek yazınız.double escape
+$ echo bu\ \ bir deyim
+bu  bir deyim
+
+echo ile tab space ile bosluk bırakarak bir örnek yazınız.
+$echo -e "merhaba dunya\\n\\t merhaba"
+merhaba dunya
+	 merhaba
+
+$mkdir
+
+$mkdir dizin0 dizin1 dizin2 # 3 dizin oluşturur.
+$touch elma0 elma1 elma2
+$mkdir ~/manav
+$mkdir -p ~/manav/reyon/sebze # -p parametresi ile iç içe dizin oluşturabiliyoruz 
+				önceden var olan dizinleri oluşturmaz yeni olanları oluşturur.
+$mkdir simge ekiz		 # iki tane dizin oluşturur.
+$mkdir simge_ekiz-1234	#tek klasör ,devamı olan şeyler "_" ile devam ettirilir, ayrıca eklemek istediklerimizi "-" yazarız bu bir linux geleneğidir.
+
+SORU:
+3 tane dosya oluşturma yolu söyleyiniz?
+$nano dosya
+$touch dosya
+$vi dosya
