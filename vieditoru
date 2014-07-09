@@ -1,0 +1,60 @@
+Vi,LINUX sistemlerinde konsolda kullanılabilecek editörlerden biridir. 
+Her sistemde hazır olarak bulunur. vi editöründe 3 mod vardır.
+Vi mode's
+1-)Command Mode
+2-)Insert Mode
+3-)Last line Mode
+
+vi editörü ile dosya açmak için 
+$vi metin.txt
+komutunu kullanıyoruz
+Vi editörünü ilk açtığımızda karşımıza command modu çıkar ve bu modda 
+yazdığımız ekranda gözükmez ama işlevi vardır ve bu işlevi gerçekleştirir.
+bu modda editorden çıkmak için 
+ZZ 
+komutunu kullanabiliriz.
+
+insert moduna gecmek için ise i ye basarız ve insert moduna gectiğimizde 
+yazdığımız ekranda gözükür 
+aynı şekilde insert moduna gecmek için o ya basarız hem insert moduna
+geceriz hemde bir alt satıra ineriz. a ya bastığımızda ise bir karakter
+boşluk bırakıp insert moduna geçeriz.
+
+editörden       :wq ile kaydedip
+                :q! ile de kaydetmeden çıkarız
+
+
+insert modundan esc ile çıkabiliriz ve command moduna döneriz
+insert modundan esc ile çıkıp : ya bastığımızda son satır
+moduna geçmiş oluruz.
+
+yön tuşları
+<-   	h
+->	l
+^	k
+v	j
+
+ve komut modundayken
+Ok tuşları      imleç (cursor) hareketi 
+h j k l     	Ok tuşları yerine imleç hareketi 
+x               bir karakter silme 
+10x		on karakter silme komutların önüne girilen rakamlar 
+editörün o komutu kaç kez tekrarlayacağını belirtir.
+dd              bir satır silme
+10dd		on satır silme 
+dw              bir sözcük silme
+10dw		on sözcük silme
+u     	        son işlemi geri alma 
+
+Kes-Yapıştır Komutları
+yy ile satırı belleğe alır.
+<n>yy ile n satırı belleğe alır.
+
+p ile imlecin bulunduğu yere kopyalar.
+
+shift+g ile en alt satıra iner.
+shift+G ile en başa gider.
+
+arama yapmak için
+/	imleçten sonrasında arama yapmaya başlar.
+?	imleçten öncesinde arama yapmaya başlar.
