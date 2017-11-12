@@ -1,0 +1,7 @@
+
+ln -s /bin/false /sbin/nologin
+echo /sbin/nologin >> /etc/shells 
+adduser -home=/ftp/smg -shell=/sbin/nologin smg
+
+
+useradd -g ftp-users -d /home/sekiz10/ftp simsim
